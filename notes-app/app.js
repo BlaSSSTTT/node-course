@@ -19,7 +19,7 @@ yargs.command({
             type:'string'
         }
     },
-    handler:function(argv){
+    handler(argv){
         notes.addNode(argv.title,argv.body);
     }
 })
@@ -34,7 +34,7 @@ yargs.command({
             type:'string'
         }
     },
-    handler:function(argv){
+    handler(argv){
         notes.removeNode(argv.title);
     }
 })
@@ -42,7 +42,7 @@ yargs.command({
 yargs.command({
     command:"list", 
     descride:"list of property",
-    handler:function(){
+    handler(){
         console.log("Propertyes");
     }
 })
@@ -50,7 +50,7 @@ yargs.command({
 yargs.command({
     command:"read", 
     descride:"read property",
-    handler:function(){
+    handler(){
         console.log("Read property");
     }
 })
