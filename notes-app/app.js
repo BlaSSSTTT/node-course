@@ -20,7 +20,7 @@ yargs.command({
         }
     },
     handler(argv){
-        notes.addNode(argv.title,argv.body);
+        notes.addNote(argv.title,argv.body);
     }
 })
 
@@ -35,7 +35,7 @@ yargs.command({
         }
     },
     handler(argv){
-        notes.removeNode(argv.title);
+        notes.removeNote(argv.title);
     }
 })
 
@@ -43,15 +43,22 @@ yargs.command({
     command:"list", 
     descride:"list of property",
     handler(){
-        console.log("Propertyes");
+        notes.listNotes();
     }
 })
 
 yargs.command({
     command:"read", 
     descride:"read property",
-    handler(){
-        console.log("Read property");
+    builder:{
+        title:{
+            description: 'Node title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv){
+        notes.readNote(argv.title);
     }
 })
 
