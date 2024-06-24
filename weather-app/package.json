@@ -7,9 +7,11 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "request": "^2.88.2",
     "yargs": "^17.7.2"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }
