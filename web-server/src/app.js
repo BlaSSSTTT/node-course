@@ -1,11 +1,14 @@
 const path = require("path");
 const express = require("express");
 const hbs = require('hbs');
+const geocode = require("./utils/geocode");
+const forecast = require("./utils/forecast");
+
 
 const app = express();
 
 //Define paths for Express config
-const publicDir = path.join(__dirname,"../public");
+const publicDir = path.join(__dirname,"../pgublic");
 const viewsPath = path.join(__dirname,"../templates/views");
 const partialsPath = path.join(__dirname,"../templates/partials");
 
@@ -38,12 +41,36 @@ app.get("/help",(req,res)=>{
     })
 })
 app.get("/weather",(req,res)=>{
+    if(!req.query.address){
+       return res.send({
+            error: "No address provided"
+       })
+    }
+    geocode(req.query.address,(error, {longitude, latitude, location}={})=>{
+        if(error){        
+            return res.send({
+                error
+           })
+        }
+        forecast(longitude, latitude, (error, forcastData) => {
+            if(error){            
+                return res.send({
+                    error: error
+               })
+            }
+            res.send({
+                location,
+                forcastData
+            });
+        })
+    })
+})
+app.get("/products",(req,res)=>{
+    console.log(req.query);
     res.send({
-        forecast:123,
-        location:"Netishyn"
+        products:[]
     });
 })
-
 app.get('/help/*',(req,res)=>{
     res.render("404",{
         title: '404',
