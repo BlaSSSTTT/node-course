@@ -6,6 +6,7 @@ const forecast = require("./utils/forecast");
 
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 //Define paths for Express config
 const publicDir = path.join(__dirname,"../public");
@@ -25,19 +26,19 @@ app.use(express.static(publicDir));
 app.get("/",(req,res)=>{
     res.render("index",{
         title:"Weather app",
-        name: 'Vlad'
+        name: 'Vladyslav Antonchyk'
     })
 })
 app.get("/about",(req,res)=>{
     res.render("about",{
         title:"About me",
-        name: 'Vlad'
+        name: 'Vladyslav Antonchyk'
     })
 })
 app.get("/help",(req,res)=>{
     res.render("help",{
         title:"Help",
-        name: 'Vlad'
+        name: 'Vladyslav Antonchyk'
     })
 })
 app.get("/weather",(req,res)=>{
@@ -75,7 +76,7 @@ app.get('/help/*',(req,res)=>{
     res.render("404",{
         title: '404',
         text: "help article not found",
-        name: 'Vlad'
+        name: 'Vladyslav Antonchyk'
     })
 })
 
@@ -83,9 +84,9 @@ app.get("*",(req,res)=>{
     res.render("404",{
         title: '404',
         text: "help article not found",
-        name: 'Vlad'
+        name: 'Vladyslav Antonchyk'
     })
 })
-app.listen(3000,()=>{
-    console.log("Server is running on port 3000.");
+app.listen(port,()=>{
+    console.log("Server is running on port "+port+".");
 })
