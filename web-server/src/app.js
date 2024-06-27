@@ -8,7 +8,7 @@ const forecast = require("./utils/forecast");
 const app = express();
 
 //Define paths for Express config
-const publicDir = path.join(__dirname,"../pgublic");
+const publicDir = path.join(__dirname,"../public");
 const viewsPath = path.join(__dirname,"../templates/views");
 const partialsPath = path.join(__dirname,"../templates/partials");
 
@@ -36,7 +36,7 @@ app.get("/about",(req,res)=>{
 })
 app.get("/help",(req,res)=>{
     res.render("help",{
-        title:"Help me",
+        title:"Help",
         name: 'Vlad'
     })
 })
