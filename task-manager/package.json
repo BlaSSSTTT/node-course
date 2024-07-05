@@ -17,6 +17,8 @@
     "mongodb": "^6.8.0",
     "mongodb-legacy": "^6.1.0",
     "mongoose": "^8.4.4",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.4",
     "validator": "^13.12.0"
   },
   "devDependencies": {
