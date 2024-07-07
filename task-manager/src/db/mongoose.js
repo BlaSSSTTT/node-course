@@ -1,5 +1,14 @@
 const mongoose = require("mongoose");
 
-const connectionURL = "mongodb://127.0.0.1:27017";
-const databaseName = "task-manager-api";
-mongoose.connect(process.env.MONGODB_URL)
+const connectionURL = "mongodb+srv://antonchykvladyslav:hGo1p1txdbf8h4zu@chatdata.lt1qd1g.mongodb.net/?retryWrites=true&w=majority&appName=ChatData";
+
+mongoose.connect(connectionURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log('Successfully connected to MongoDB');
+})
+.catch((err) => {
+  console.error('Error connecting to MongoDB:', err);
+});
